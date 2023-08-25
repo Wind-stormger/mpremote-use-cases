@@ -19,27 +19,28 @@ Most of the use cases are pretty clear in the documentation, but I'm not a comma
 
 Existing use cases for this post:
 
-[toc]
-
-> 1. cp
-> 1.1 Copy file, in the current path of the terminal
-> 1.2 Copy files，in absolute paths
-> 1.3 Copy multiple files  at the same time
-> 2. exec, run
-> 3. mount
-> 3.1 Mount the local directory on the remote device
-> 3.2 Continue to use the script in the original flash after mounting the local directory
-> 3.3 A way to speed up testing
+- [1. cp](#1-cp)
+  - [1.1 Copy file, in the current path of the terminal](#11-copy-the-file-in-the-current-path-of-the-terminal)
+  - [1.2 Copy files，in absolute paths](#12-copy-files-in-absolute-paths)
+  - [1.3 Copy multiple files at the same time](#13-copy-multiple-files-at-the-same-time)
+- [2. exec, run](#2-exec-run)
+- [3. mount](#3-mount)
+  - [3.1 Mount the local directory on the remote device](#31-mount-the-local-directory-on-the-remote-device)
+  - [3.2 Continue to use the script in the original flash after mounting the local directory](#32-continue-to-use-the-script-in-the-original-flash-after-mounting-the-local-directory)
+  - [3.3 A way to speed up testing](#33-a-way-to-speed-up-testing)
 
 ## 1. cp
 
-This is probably the most common command besides repl, used to copy files from local to device, or from device to local. Probably because I am not yet familiar with the terminal command syntax, at first I could not fully grasp the usage of the cp command from the several use cases in the documentation.
+This is probably the most common command besides repl, used to copy files from local to device, or from device to local.
 
+Probably because I am not yet familiar with the terminal command syntax, at first I could not fully grasp the usage of the cp command from the several use cases in the documentation.
 
+So I made some use cases to show it visually.
 
 ### 1.1 Copy the file, in the current path of the terminal
 
 First create a clean temporary folder and write a `main.py` into it.
+
 ```python
 print ("start")
 for i in range(2):
@@ -47,15 +48,19 @@ for i in range(2):
 print ("end")
 ```
 
+Enter the path where this folder is located on the command line.
+> Maybe most beginners don’t know how to use CLI(command-line interface) in Windows, you can refer to this article to set the location of the current command line.
+> [powershell: setting your current location (Set-Location)](https://learn.microsoft.com/en-us/powershell/scripting/samples/managing-current-location?view=powershell-7.3#setting-your-current-location-set-location)
+
 Simplest use case, enter this folder path in terminal, copy file from local to device :
 ```
 mpremote connect COM1 cp main.py : 
 
-mpremote connect COM1 cp main.py :main.py
+mpremote connect COM1 cp main.py :main_2.py
 ```
 The two commands achieve the exact same function.
 
-After the `:` symbol, if you enter a filename, the file will be renamed to this filename when copied to the device.
+After the `:` symbol, if you enter another filename, the file will be renamed to this filename when copied to the device.
 
 Copy file from device to local :
 ```
@@ -96,7 +101,7 @@ mpremote connect /dev/ttyACM0 cp :main.py ~/temp/
 mpremote connect /dev/ttyACM0 cp :main.py /home/wind/temp/
 ```
 
-### 1.3 Copy multiple files  at the same time
+### 1.3 Copy multiple files at the same time
 
 In Linux, such as Ubuntu, copy multiple files from local to device with absolute path :
 ```
