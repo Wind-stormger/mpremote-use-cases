@@ -17,9 +17,9 @@ Maybe some minimalists, I think the mpremote tool will also be suitable, just us
 ----------
 Most of the use cases are pretty clear in the documentation, but I'm not a command line veteran, so I'll put some use cases I figured out here, maybe it will help some newbies like me.
 
-Using mpremote 0.3.0 that has been released in PyPI.
-
 Existing use cases for this post:
+
+[toc]
 
 > 1. cp
 > 1.1 Copy file, in the current path of the terminal
@@ -34,6 +34,8 @@ Existing use cases for this post:
 ## 1. cp
 
 This is probably the most common command besides repl, used to copy files from local to device, or from device to local. Probably because I am not yet familiar with the terminal command syntax, at first I could not fully grasp the usage of the cp command from the several use cases in the documentation.
+
+
 
 ### 1.1 Copy the file, in the current path of the terminal
 
